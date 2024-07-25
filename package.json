@@ -1,0 +1,23 @@
+{
+	"name": "gt-wiki",
+	"description": "helper for Guardian Tales wiki data and assets management",
+	"type": "module",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/SuggonM/gt-wiki"
+	},
+	"keywords": [
+		"Guardian Tales",
+		"Guardian Tales Wiki",
+		"gt-wiki"
+	],
+	"author": "SuggonM",
+	"contributors": [
+		{
+			"name": "Suggon",
+			"url": "https://guardian-tales.fandom.com/wiki/User:Suggon"
+		}
+	],
+	"license": "MIT"
+}
