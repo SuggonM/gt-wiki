@@ -3,6 +3,10 @@
 	"description": "helper for Guardian Tales wiki data and assets management",
 	"type": "module",
 	"main": "index.js",
+	"scripts": {
+		"start": "node index.js",
+		"test": "node test.js"
+	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/SuggonM/gt-wiki"
@@ -19,5 +23,8 @@
 			"url": "https://guardian-tales.fandom.com/wiki/User:Suggon"
 		}
 	],
-	"license": "MIT"
+	"license": "MIT",
+	"dependencies": {
+		"got": "^14.4.2"
+	}
 }
