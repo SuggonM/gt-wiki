@@ -1,6 +1,6 @@
 import { writeFileSync } from 'fs';
 import { basename } from 'path';
-import got from 'got'
+import got from 'got';
 
 import { Version } from './modules/Version.js';
 import * as misc from './modules/helper.js';
@@ -13,7 +13,7 @@ const fetchIndex = [
 	'spritesheets/items',      // icons, weapons, cards
 	'spritesheets/ui/main_s3', // UI icons
 	'ui/common'                // stickers
-]
+];
 
 console.log('\nLOG: Downloading assets from the server ...');
 const downloadDir = './data/version-data/' + version.current;
