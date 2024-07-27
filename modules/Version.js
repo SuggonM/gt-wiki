@@ -50,7 +50,7 @@ export class Version {
 	}
 
 	async versionCheck(version = this.current) {
-		const assetBundleUrl = this.versionLink(this.current) + '/assetbundle-version';
+		const assetBundleUrl = this.versionLink() + '/assetbundle-version';
 		console.log('LOG: Checking for version "' + version + '" ...');
 		try {
 			const { body: response } = await got(assetBundleUrl);
@@ -58,7 +58,7 @@ export class Version {
 			console.log('LOG: Found version ' + assetVersion);
 			if (version !== assetVersion) throw new Error('Non-matching versions!');
 			return true;
-		} catch(error) {
+		} catch (error) {
 			console.error('LOG: Version up-to-date, or an error occurred.');
 			misc.writeError(error);
 		}

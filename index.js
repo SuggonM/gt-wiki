@@ -28,7 +28,7 @@ fetchIndex.forEach(async (fetchPath, i) => {
 
 		const { body: asset } = await got(absFetchPath);
 		writeFileSync(absDLPath, asset);
-	} catch(error) {
+	} catch (error) {
 		misc.writeError(error);
 	}
 });
