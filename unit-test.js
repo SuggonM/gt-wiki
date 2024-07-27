@@ -4,7 +4,8 @@ const version = new Version();
 const versionCustom = new Version('2.10.0');
 
 console.log('Testing "Version" class...');
-[ version, versionCustom ].forEach(ver => {
+
+for (const ver of [ version, versionCustom ]) {
 	console.log('\nVersion ' + ver.current);
 	console.log(ver.current);
 	console.log(ver.next);
@@ -13,5 +14,5 @@ console.log('Testing "Version" class...');
 	console.log(ver.id2version('1000'));
 	console.log(ver.nextVersion());
 	console.log(ver.versionLink());
-	console.log(ver.versionCheck());
-});
+	console.log(await ver.versionCheck());
+};
