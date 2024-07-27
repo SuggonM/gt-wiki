@@ -5,7 +5,11 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "node index.js",
-		"test": "node unit-test.js"
+		"test": "node unit-test.js",
+
+		"fetch": "...",
+		"build": "...",
+		"upload": "..."
 	},
 	"repository": {
 		"type": "git",
