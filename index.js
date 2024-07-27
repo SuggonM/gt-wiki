@@ -18,10 +18,10 @@ const fetchIndex = [
 console.log('\nLOG: Downloading assets from the server ...');
 const downloadDir = './data/version-data/' + version.current;
 
-fetchIndex.forEach(async (fetchPath, i) => {
+for (let i = 0; i < fetchIndex.length; i++) {
 
-	console.log(`\t[${i+1}/${fetchIndex.length}]\t~/${fetchIndex[i]}`);
-
+	const fetchPath = fetchIndex[i];
+	console.log(`\t[${i+1}/${fetchIndex.length}]\t~/${fetchPath}`);
 	try {
 		const absFetchPath = version.link + '/AssetBundles/Android/' + fetchPath;
 		const absDLPath = downloadDir + '/' + basename(fetchPath);
@@ -31,4 +31,6 @@ fetchIndex.forEach(async (fetchPath, i) => {
 	} catch (error) {
 		misc.writeError(error);
 	}
-});
+}
+
+console.log('\nLOG: Starting AssetRipper v0.3.4.0 ...');
