@@ -26,7 +26,7 @@ for (let i = 0; i < fetchIndex.length; i++) {
 		const absFetchPath = version.link + '/AssetBundles/Android/' + fetchPath;
 		const absDLPath = downloadDir + '/' + basename(fetchPath);
 
-		const { body: asset } = await got(absFetchPath);
+		const { rawBody: asset } = await got(absFetchPath);
 		writeFileSync(absDLPath, asset);
 	} catch (error) {
 		misc.writeError(error);
