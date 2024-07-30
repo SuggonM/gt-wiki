@@ -13,6 +13,6 @@ for (const ver of [ version, versionCustom ]) {
 	console.log(ver.version2id('3.00.0'));
 	console.log(ver.id2version('1000'));
 	console.log(ver.nextVersion());
-	console.log(ver.versionLink());
+	console.log(ver.versionLink('2.65.0'));
 	console.log(await ver.versionCheck());
 };

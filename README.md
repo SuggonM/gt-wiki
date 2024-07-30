@@ -31,7 +31,7 @@ $ npm start
 ## Fetch Index
 The repository currently only fetches the following static files from the bucket. (Dynamic file tracking coming soon™!)
 ```js
-// index.js#L11-L16
+// index.js#L13-L18
 const fetchIndex = [
 	'spritesheets/heroes',     // character sprites, portraits
 	'spritesheets/items',      // icons, weapons, cards

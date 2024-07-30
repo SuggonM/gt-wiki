@@ -1,7 +1,6 @@
-import { readFileSync } from 'fs';
 import got from 'got';
 
-import * as misc from './helper.js';
+import { versions, writeError } from './helper.js';
 
 export class Version {
 	current;
@@ -11,16 +10,14 @@ export class Version {
 	get link() {
 		return this.versionLink();
 	}
+	get dir() {
+		return this.versionDir();
+	}
 
 	constructor(version) {
 		if (version) { this.current = version; return; }
 
-		const json = readFileSync('./data/versions.json', 'utf-8');
-		const versionJson = JSON.parse(json);
-		const allVersions = versionJson.versions;
-		const curVersion = allVersions[allVersions.length - 1];
-
-		this.current = curVersion;
+		this.current = versions.current;
 	}
 
 	version2id(version) {
@@ -56,11 +53,15 @@ export class Version {
 			const { body: response } = await got(assetBundleUrl);
 			const assetVersion = response.split('\n')[1];
 			console.log('LOG: Found version ' + assetVersion);
-			if (version !== assetVersion) throw new Error('Non-matching versions!');
+			if (version !== assetVersion) throw new Error('Version mismatch!');
 			return true;
 		} catch (error) {
 			console.error('LOG: Version up-to-date, or an error occurred.');
-			misc.writeError(error);
+			writeError(error);
 		}
+	}
+
+	versionDir(version = this.current) {
+		return `./data/version-data/${version}`;
 	}
 }
