@@ -2,8 +2,7 @@ node_modules
 .config.json
 error.log
 
-### ignore downloaded raw assets
-# Ignore all files
+# ignore downloaded raw assets
 data/version-data/*/*
-# Unignore files with extensions
-!data/version-data/*/*.*
+# unignore directories with meaningful data; suffixed with '_'
+!data/version-data/*/*_
