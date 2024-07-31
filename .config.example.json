@@ -5,9 +5,10 @@
 
 	"FFmpeg": "ffmpeg",
 	"AR": "AssetRipper",
-	"AR_dir": "C:/Program Files/AssetRipper",
 	"Spine": "Spine.com",
 	"Spine_version": "3.8.87",
 
-	"MediaWiki_API_key": "Coming Soon"
+	"MediaWiki_API_key": "Coming Soon",
+
+	"delete_downloaded_assets": false
 }

@@ -5,7 +5,6 @@ import { Version } from '../Version.js';
 
 class AssetRipper {
 	app;
-	appDir;
 	dataViewDir;
 	dataExtractTree;
 	assetName;
@@ -13,23 +12,22 @@ class AssetRipper {
 
 	constructor(configs) {
 		this.app = configs.app;
-		this.appDir = configs.appDir;
-		this.dataViewDir = this.appDir + '/Ripped/ExportedProject/Assets';
 		this.exportDir = configs.assetDir;
 	}
 
-	scan(asset, option = {}) {
+	scan(asset, options = {}) {
 		console.log(`\nAssetRipper: Reading data from "${asset}" ...`);
-		$(this.app, '-q', asset);
+		const ARprocess = $(this.app, '-q', asset);
+		this.dataViewDir || this.#detectDataDir(ARprocess.stdout);
 
 		const extractTreeAll = readdirSync(this.dataViewDir, { recursive: true, withFileTypes: true });
 		const extractTree = this.#sanitizeTree(extractTreeAll);
 
 		this.dataExtractTree = extractTree;
 		this.assetName = asset.replace(/.*[\\/]/, '');
-		this.exportDir += `/${this.assetName}_`;
+		this.exportDir = asset + '_';
 
-		if (option.print === true) {
+		if (options.print === true) {
 			const fileList = extractTree.map(file => file.name);
 			console.log('AssetRipper: Detected assets:');
 			console.log(fileList);
@@ -64,7 +62,7 @@ class AssetRipper {
 			const exportFile = this.exportDir + '/' + sanitizedName;
 
 			renameSync(remoteFile, exportFile);
-			console.log(`\t[${i+1}/${extractTree.length}]\t${relPath}/${sanitizedName}`);
+			console.log(`\t[${i+1}/${extractTree.length}]\t${relPath}/${file.name}`);
 		});
 	}
 
@@ -74,13 +72,21 @@ class AssetRipper {
 			!elem.name.includes('.meta')
 		);
 	}
+
+	#detectDataDir(stdout) {
+		const rootPathLogFilter = 'General : ExportRootPath: ';
+		const rootPathLogs = stdout.toString().split(/\r?\n/);
+		const rootPathLog = rootPathLogs.filter(log => log.includes(rootPathLogFilter))[0];
+		const rootPath = rootPathLog.replace(rootPathLogFilter, '').replaceAll('\\', '/');
+
+		this.dataViewDir = rootPath + '/ExportedProject/Assets';
+	}
 }
 
 class _AssetRipper extends AssetRipper {
 	constructor(assetDir) {
 		super({
 			app: config.get('AR'),
-			appDir: config.get('AR_dir'),
 			assetDir: assetDir || new Version().dir
 		});
 	}
