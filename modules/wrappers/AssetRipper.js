@@ -56,7 +56,7 @@ class AssetRipper {
 		existsSync(this.exportDir) || mkdirSync(this.exportDir);
 
 		extractTree.forEach((file, i) => {
-			const sanitizedName = file.name.replace(/\.(txt|bytes|rgba4444)/, '');
+			const sanitizedName = file.name.replace(/\.(txt|bytes|rgba4444)/, '').replace('.prefab', '.yaml');
 			const relPath = file.parentPath.replace(/.*Assets/, '~').replaceAll('\\', '/');
 			const remoteFile = file.parentPath + '/' + file.name;
 			const exportFile = this.exportDir + '/' + sanitizedName;
