@@ -9,6 +9,7 @@ Helper for Guardian Tales wiki data and assets management
 - [ ] try auto-pushing edits to wiki using [MediaWiki API](https://www.mediawiki.org/wiki/API:Main_page)
 - [ ] create organized directories for versions
 - [ ] create a custom `strings-enUS.json`
+- [ ] write own unpacker and unpremultiplier
 
 ## Cloning
 Graphics are stored in the form of [Git LFS](https://git-lfs.com/) in order to avoid bloated repository. When cloning, you can choose to either download all LFS assets (recommended):

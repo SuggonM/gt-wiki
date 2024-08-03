@@ -6,7 +6,6 @@
 	"scripts": {
 		"start": "node index.js",
 		"test": "node unit-test.js",
-
 		"fetch": "...",
 		"build": "...",
 		"upload": "..."
@@ -31,6 +30,7 @@
 	"dependencies": {
 		"dotenv": "^16.4.5",
 		"got": "^14.4.2",
+		"sharp": "^0.33.4",
 		"yaml": "^2.5.0"
 	}
 }
