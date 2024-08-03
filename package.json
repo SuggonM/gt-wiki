@@ -29,6 +29,8 @@
 	],
 	"license": "MIT",
 	"dependencies": {
-		"got": "^14.4.2"
+		"dotenv": "^16.4.5",
+		"got": "^14.4.2",
+		"yaml": "^2.5.0"
 	}
 }
