@@ -39,30 +39,30 @@ console.log('\nLOG: Starting AssetRipper v0.3.4.0 ...');
 
 const assetRipper = new AssetRipper();
 
-assetRipper.scan(version.dir + '/heroes');
-assetRipper.export([
-	'characters.png',
-	'characters.atlas.txt',
-	'portraits.png',
-	'portraits.json'
-]);
+const extractIndex = {
+	heroes: [
+		'characters.png',
+		'characters.atlas.txt',
+		'portraits.png',
+		'portraits.asset'
+	],
+	items: [
+		'items.png',
+		'items.atlas.txt'
+	],
+	main_s3: [
+		'MainUiS3.png',
+		'MainUiS3.json'
+	],
+	common: [
+		'ProfilecardStickers.png',
+		'ProfilecardStickers.prefab'
+	]
+}
 
-assetRipper.scan(version.dir + '/items');
-assetRipper.export([
-	'items.png',
-	'items.atlas.txt'
-]);
-
-assetRipper.scan(version.dir + '/main_s3');
-assetRipper.export([
-	'MainUiS3.png',
-	'MainUiS3.json'
-]);
-
-assetRipper.scan(version.dir + '/common');
-assetRipper.export([
-	'ProfilecardStickers.png',
-	'ProfilecardStickers.prefab'
-]);
+for (const [asset, data] of Object.entries(extractIndex)) {
+	assetRipper.scan(version.dir + '/' + asset);
+	assetRipper.export(data);
+}
 
 console.log(`\nDiffing all sprites from v${version.current} -> v${version.next} ...`);
