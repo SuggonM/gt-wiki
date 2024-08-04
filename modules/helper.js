@@ -1,6 +1,5 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { spawnSync } from 'node:child_process';
-import { pathToFileURL } from 'node:url';
 import 'dotenv/config';
 
 export function writeError(error) {
@@ -27,16 +26,3 @@ export function $(program, ...args) {
 // get version JSON data
 const versionFile = readFileSync('./data/versions.json', 'utf8');
 export const versions = JSON.parse(versionFile);
-
-// dynamic import atlas prototype from spine2json
-const s2jPath = pathToFileURL(process.env['s2j_path']).href;
-const modules = {
-	atlas: 'spine-atlas.mjs',
-	skel2json: 'spine-skel.mjs',
-	json2patch: 'spine-json.mjs'
-};
-export async function s2jImport(module) {
-	const modulePath = s2jPath + '/scripts/' + modules[module];
-	const imports = await import(modulePath);
-	return imports;
-}

@@ -21,6 +21,14 @@ $ git clone https://github.com/SuggonM/gt-wiki
 $ git clone --config lfs.fetchexclude="*" https://github.com/SuggonM/gt-wiki
 ```
 
+## Installing Dependencies
+Dependencies, and other required repositories can be installed by running the `install-deps.bat` script.
+
+The script works outside *Windows* environment as well:
+```bash
+$ sh ./install-deps.bat
+```
+
 ## Running the Script
 In order to run the main update script, you can simply run one of these commands:
 ```bash
