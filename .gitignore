@@ -1,5 +1,5 @@
 node_modules
-.config.json
+.env
 error.log
 
 # ignore downloaded raw assets

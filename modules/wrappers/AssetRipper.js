@@ -1,6 +1,7 @@
 import { readdirSync, renameSync, existsSync, mkdirSync } from 'fs';
+import 'dotenv/config';
 
-import { $, config } from '../helper.js';
+import { $ } from '../helper.js';
 import { Version } from '../Version.js';
 
 class AssetRipper {
@@ -86,7 +87,7 @@ class AssetRipper {
 class _AssetRipper extends AssetRipper {
 	constructor(assetDir) {
 		super({
-			app: config.get('AR'),
+			app: process.env['AR'],
 			assetDir: assetDir || new Version().dir
 		});
 	}
